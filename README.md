@@ -1,2 +1,2 @@
-# stinking-scoreboard
-Scoreboard app for guy's weekend!
+# basement-of-stinkology
+App for guy's weekend!
