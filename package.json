@@ -1,0 +1,21 @@
+{
+  "name": "basement-of-stinkology",
+  "description": "Root package for basement of stinkology app.",
+  "repository": "git@github.com:sonofab1rd/basement-of-stinkology.git",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "lerna run start --parallel",
+    "build": "lerna run build --stream",
+    "dev": "lerna run dev --parallel",
+    "test": "lerna run test --stream"
+  },
+  "workspaces": [
+    "api",
+    "web"
+  ],
+  "dependencies": {
+    "lerna": "^3.22.1",
+    "prettier": "^2.2.1"
+  }
+}
