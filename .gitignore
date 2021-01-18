@@ -35,3 +35,6 @@ coverage
 
 # Dotenv
 .env
+
+# Serverless Jetpack
+.serverless

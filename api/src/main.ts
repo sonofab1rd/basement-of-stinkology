@@ -7,8 +7,8 @@ import * as dotenv from 'dotenv';
 import * as express from 'express';
 import { Express } from 'express';
 import { Server } from 'http';
-import { AppModule } from './app.module';
 import * as path from 'path';
+import { AppModule } from './app.module';
 
 dotenv.config();
 console.log(`Loaded .env from ${path.resolve(process.cwd(), '.env')}`);
