@@ -1,0 +1,5 @@
+{
+  "assignees": ["cdierkens", "sonofab1rd"],
+  "extends": ["config:base"],
+  "rebaseWhen": "behind-base-branch"
+}
