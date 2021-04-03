@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
+import jwt_decode from 'jwt-decode';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
@@ -36,6 +37,44 @@ describe('AppController (e2e)', () => {
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(201)
+      .expect((res) =>
+        expect(jwt_decode(res.body.access_token)).toEqual(
+          expect.objectContaining({
+            username: 'john',
+          }),
+        ),
+      );
+  });
+
+  it('/profile', async () => {
+    let token: string;
+
+    await request(app.getHttpServer())
+      .get('/profile')
+      .expect(401)
+      .expect(JSON.stringify({ statusCode: 401, message: 'Unauthorized' }));
+
+    // TODO: Future tests could use an abstracted authenticate function.
+    await request(app.getHttpServer())
+      .post('/auth/login')
+      .send({ username: 'john', password: 'changeme' })
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(201)
+      .expect((res) => {
+        token = res.body.access_token;
+
+        expect(jwt_decode(res.body.access_token)).toEqual(
+          expect.objectContaining({
+            username: 'john',
+          }),
+        );
+      });
+
+    await request(app.getHttpServer())
+      .get('/profile')
+      .set('Authorization', `Bearer ${token}`)
+      .expect(200)
       .expect(JSON.stringify({ userId: 1, username: 'john' }));
   });
 });

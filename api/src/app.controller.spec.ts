@@ -1,14 +1,19 @@
 import { getMockReq } from '@jest-mock/express';
+import { ConfigModule } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
+import jwtDecode from 'jwt-decode';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
 import { AuthUser } from './auth/auth.service';
+import { UsersModule } from './users/users.module';
 
 describe('AppController', () => {
   let appController: AppController;
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
+      imports: [AuthModule, ConfigModule.forRoot(), UsersModule],
       controllers: [AppController],
       providers: [AppService],
     }).compile();
@@ -35,7 +40,13 @@ describe('AppController', () => {
         user,
       });
 
-      await expect(appController.login(req)).resolves.toBe(user);
+      const result = await appController.login(req);
+
+      expect(jwtDecode(result.access_token)).toEqual(
+        expect.objectContaining({
+          username: 'sonofab1rd',
+        }),
+      );
     });
   });
 });
