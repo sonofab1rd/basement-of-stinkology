@@ -15,10 +15,27 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/ (GET)', () => {
+  it('/hello (GET)', () => {
     return request(app.getHttpServer())
-      .get('/')
+      .get('/hello')
       .expect(200)
       .expect('Hello World!');
+  });
+
+  it('/auth/login Unauthorized (POST)', () => {
+    return request(app.getHttpServer())
+      .post('/auth/login')
+      .expect(401)
+      .expect(JSON.stringify({ statusCode: 401, message: 'Unauthorized' }));
+  });
+
+  it('/auth/login Authorized (POST)', () => {
+    return request(app.getHttpServer())
+      .post('/auth/login')
+      .send({ username: 'john', password: 'changeme' })
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(201)
+      .expect(JSON.stringify({ userId: 1, username: 'john' }));
   });
 });

@@ -26,13 +26,17 @@
   "dependencies": {
     "@nestjs/common": "7.6.15",
     "@nestjs/core": "7.6.15",
+    "@nestjs/passport": "false7.1.5",
     "@nestjs/platform-express": "7.6.15",
     "dotenv": "8.2.0",
+    "passport": "false0.4.1",
+    "passport-local": "false1.0.0",
     "reflect-metadata": "0.1.13",
     "rimraf": "3.0.2",
     "rxjs": "6.6.7"
   },
   "devDependencies": {
+    "@jest-mock/express": "false1.4.1",
     "@nestjs/cli": "7.6.0",
     "@nestjs/schematics": "7.3.1",
     "@nestjs/testing": "7.6.15",
@@ -41,6 +45,7 @@
     "@types/express": "4.17.11",
     "@types/jest": "26.0.22",
     "@types/node": "14.14.37",
+    "@types/passport-local": "false1.0.33",
     "@types/supertest": "2.0.11",
     "@typescript-eslint/eslint-plugin": "4.20.0",
     "@typescript-eslint/parser": "4.20.0",
