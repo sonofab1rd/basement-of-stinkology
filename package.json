@@ -16,8 +16,8 @@
     "web"
   ],
   "dependencies": {
-    "lerna": "^3.22.1",
-    "prettier": "^2.2.1",
-    "serverless": "^2.19.0"
+    "lerna": "4.0.0",
+    "prettier": "2.2.1",
+    "serverless": "2.33.1"
   }
 }
