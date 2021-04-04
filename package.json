@@ -9,7 +9,8 @@
     "build": "lerna run build --stream",
     "deploy": "lerna run deploy --stream",
     "dev": "lerna run dev --parallel",
-    "test": "lerna run test --stream"
+    "test": "lerna run test --stream",
+    "test:e2e": "lerna run test:e2e --stream"
   },
   "workspaces": [
     "api",

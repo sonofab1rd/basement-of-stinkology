@@ -20,9 +20,25 @@ jobs:
           yarn install --frozen-lockfile
           yarn test
 
+  test-e2e:
+    runs-on: ubuntu-latest
+
+    env:
+      BOS_JWT_SECRET: 'ci-secret'
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+      - name: Test
+        run: |
+          yarn install --frozen-lockfile
+          yarn test:e2e
+
   deploy:
     runs-on: ubuntu-latest
-    needs: ['test']
+    needs: ['test', 'test-e2e']
 
     env:
       BOS_ENV: ${{ secrets.BOS_ENV }}
