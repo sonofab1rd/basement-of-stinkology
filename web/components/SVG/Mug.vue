@@ -1,0 +1,327 @@
+<template>
+  <svg
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:cc="http://web.resource.org/cc/"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:ns1="http://sozi.baierouge.fr"
+    style="
+      fill-rule: evenodd;
+      text-rendering: geometricPrecision;
+      image-rendering: optimizeQuality;
+      clip-rule: evenodd;
+      shape-rendering: geometricPrecision;
+    "
+    xml:space="preserve"
+    viewBox="0 0 165 145"
+  >
+    <defs>
+      <style type="text/css">
+        .str1 {
+          stroke: #1f1a17;
+          stroke-width: 0.0931578;
+        }
+        .str0 {
+          stroke: #1f1a17;
+          stroke-width: 0.244539;
+        }
+        .fil3 {
+          fill: none;
+        }
+        .fil1 {
+          fill: #c2c1c1;
+        }
+        .fil0 {
+          fill: white;
+        }
+        .fil2 {
+          fill: url(#id0);
+        }
+      </style>
+      <linearGradient
+        id="id0"
+        y2="76.714"
+        gradientUnits="userSpaceOnUse"
+        x2="72.023"
+        y1="74.856"
+        x1="-.41504"
+      >
+        <stop style="stop-color: white" offset="0" />
+        <stop style="stop-color: #c2c1c1" offset="1" />
+      </linearGradient>
+    </defs>
+    <g id="Ebene_x0020_1">
+      <path
+        class="fil0 str0"
+        d="m6.1244 16.617c-10.67-4.4986-2.6673-11.996 5.3349-10.497 0-4.4985 13.49-5.9978 18.825-1.4994 0-5.9978 15.852-5.9978 15.852 0 8.0022-4.4985 21.34 1.4994 16.005 5.998 8.0022 1.4995 5.3348 8.9972 0 8.9972 8.0022 1.4995 5.3348 8.9969 0 8.9969 5.3348 4.4986-8.0024 10.496-16.005 4.4986-2.6673 5.9978-18.672 5.9978-18.672 0-5.3349 4.4985-16.005 2.9991-13.337-1.4994-8.0024 1.4994-13.337-4.4986-8.0024-7.4977-5.3347 0-8.0022-7.4976 0-7.4976l-0.000086901 0.000086901z"
+      />
+      <path
+        class="fil1 str0"
+        d="m71.486 43.161c18.192 0.7735 32.673 13.75 32.673 29.639s-14.48 28.866-32.673 29.639v-7.8158c13.197-0.76334 23.631-10.243 23.631-21.823s-10.434-21.06-23.631-21.823v-7.8158z"
+      />
+      <path
+        class="fil2 str0"
+        d="m4.763 25.057h62.082c2.5626-0.000086901 4.6409 2.0782 4.6409 4.6408l-0.000086901 92.176c0.000086901 2.5625-2.0782 4.6408-4.6408 4.6408l-62.082 0.000086901c-2.5625-0.000086901-4.6408-2.0783-4.6408-4.6409l-0.000086901-92.175c0.000086901-2.5626 2.0783-4.6409 4.6409-4.6409z"
+      />
+      <ellipse
+        cy="8.8973"
+        cx="18.062"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="6.3334"
+        cx="22.309"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="8.053"
+        cx="32.675"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="8.2428"
+        cx="25.295"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="11.651"
+        cx="37.338"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="8.7812"
+        cx="36.383"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="9.1239"
+        cx="55.01"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="9.4667"
+        cx="43.959"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="13.487"
+        cx="18.98"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="9.2401"
+        cx="10.529"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="12.796"
+        cx="30.533"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="12.985"
+        cx="23.153"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="18.229"
+        cx="31.525"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="15.512"
+        cx="35.465"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="17.232"
+        cx="45.831"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="14.821"
+        cx="61.552"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="20.371"
+        cx="48.353"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="15.971"
+        cx="51.834"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="19.68"
+        cx="59.906"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="19.87"
+        cx="52.526"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="22.666"
+        cx="32.136"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="21.974"
+        cx="43.69"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="16.699"
+        cx="8.4244"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="14.288"
+        cx="9.6115"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="17.232"
+        cx="17.071"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="16.198"
+        cx="12.598"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="19.147"
+        cx="22.499"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="16.736"
+        cx="23.686"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="18.456"
+        cx="34.052"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="18.646"
+        cx="26.672"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="21.442"
+        cx="6.2827"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+      <ellipse
+        cy="20.75"
+        cx="17.836"
+        rx=".89230"
+        class="fil3 str1"
+        ry=".76473"
+      />
+    </g>
+    <metadata>
+      <rdf:RDF
+        ><cc:Work
+          ><dc:format>image/svg+xml</dc:format
+          ><dc:type
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+          /><cc:license
+            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+          /><dc:publisher
+            ><cc:Agent rdf:about="http://openclipart.org/"
+              ><dc:title>Openclipart</dc:title></cc:Agent
+            ></dc:publisher
+          ><dc:title>Beer</dc:title><dc:date>2010-04-18T08:29:39</dc:date
+          ><dc:description>glas of beer</dc:description
+          ><dc:source>https://openclipart.org/detail/48787/-by-zorro</dc:source
+          ><dc:creator
+            ><cc:Agent><dc:title>zorro</dc:title></cc:Agent></dc:creator
+          ><dc:subject
+            ><rdf:Bag
+              ><rdf:li>Beer</rdf:li><rdf:li>Bier</rdf:li
+              ><rdf:li>Bierglas</rdf:li><rdf:li>Glas of Beer</rdf:li></rdf:Bag
+            ></dc:subject
+          ></cc:Work
+        ><cc:License
+          rdf:about="http://creativecommons.org/licenses/publicdomain/"
+          ><cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction" /><cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution" /><cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks" /></cc:License
+      ></rdf:RDF>
+    </metadata>
+  </svg>
+</template>
