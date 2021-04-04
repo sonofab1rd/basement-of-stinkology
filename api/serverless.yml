@@ -43,6 +43,7 @@ provider:
 
   environment:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+    BOS_JWT_SECRET: ${ssm:/aws/reference/secretsmanager/BOS_JWT_SECRET}
 
 functions:
   main:
