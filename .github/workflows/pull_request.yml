@@ -28,7 +28,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '14'
-      - name: Test
+      - name: Test e2e
         run: |
           yarn install --frozen-lockfile
           yarn test:e2e
