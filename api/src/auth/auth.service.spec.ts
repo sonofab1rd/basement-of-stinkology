@@ -1,4 +1,4 @@
-import { ConfigService } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule, JwtService } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { Test, TestingModule } from '@nestjs/testing';
@@ -22,6 +22,13 @@ describe('AuthService', () => {
           secret: 'test-secret',
           signOptions: { expiresIn: '60s' },
         }),
+        ConfigModule.forRoot({
+          load: [
+            () => ({
+              BOS_JWT_SECRET: 'test-secret',
+            }),
+          ],
+        }),
       ],
       providers: [AuthService, LocalStrategy, ConfigService, JwtStrategy],
       exports: [AuthService, JwtModule],
@@ -37,7 +44,7 @@ describe('AuthService', () => {
   describe('validateUser', () => {
     it('should validate a known user', async () => {
       await expect(service.validateUser('john', 'changeme')).resolves.toEqual({
-        userId: 1,
+        userId: '1',
         username: 'john',
       });
     });
@@ -57,7 +64,7 @@ describe('AuthService', () => {
 
   describe('login', () => {
     it('should login', async () => {
-      const result = await service.login({ userId: 1, username: 'john' });
+      const result = await service.login({ userId: '1', username: 'john' });
 
       expect(jwtDecode(result.access_token)).toEqual(
         expect.objectContaining({ username: 'john' }),

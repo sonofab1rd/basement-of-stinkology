@@ -18,7 +18,7 @@ describe('UsersService', () => {
 
   it('should find a known user', async () => {
     await expect(service.findOne('john')).resolves.toEqual({
-      userId: 1,
+      userId: '1',
       username: 'john',
       password: 'changeme',
     });

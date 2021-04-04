@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
-import jwt_decode from 'jwt-decode';
+import jwtDecode from 'jwt-decode';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
@@ -38,7 +38,7 @@ describe('AppController (e2e)', () => {
       .expect('Content-Type', /json/)
       .expect(201)
       .expect((res) =>
-        expect(jwt_decode(res.body.access_token)).toEqual(
+        expect(jwtDecode(res.body.access_token)).toEqual(
           expect.objectContaining({
             username: 'john',
           }),
@@ -64,7 +64,7 @@ describe('AppController (e2e)', () => {
       .expect((res) => {
         token = res.body.access_token;
 
-        expect(jwt_decode(res.body.access_token)).toEqual(
+        expect(jwtDecode(res.body.access_token)).toEqual(
           expect.objectContaining({
             username: 'john',
           }),
@@ -75,6 +75,6 @@ describe('AppController (e2e)', () => {
       .get('/profile')
       .set('Authorization', `Bearer ${token}`)
       .expect(200)
-      .expect(JSON.stringify({ userId: 1, username: 'john' }));
+      .expect(JSON.stringify({ userId: '1', username: 'john' }));
   });
 });

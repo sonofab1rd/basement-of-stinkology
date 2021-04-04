@@ -1,21 +1,16 @@
 import { Injectable } from '@nestjs/common';
 
 export type User = {
-  userId: number;
+  userId: string;
   username: string;
   password: string;
 };
 
 const users: readonly User[] = [
   {
-    userId: 1,
+    userId: '1',
     username: 'john',
     password: 'changeme',
-  },
-  {
-    userId: 2,
-    username: 'maria',
-    password: 'guess',
   },
 ];
 
