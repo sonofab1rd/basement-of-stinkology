@@ -13,7 +13,17 @@ describe('AppController', () => {
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      imports: [AuthModule, ConfigModule.forRoot(), UsersModule],
+      imports: [
+        AuthModule,
+        ConfigModule.forRoot({
+          load: [
+            () => ({
+              BOS_JWT_SECRET: 'test-secret',
+            }),
+          ],
+        }),
+        UsersModule,
+      ],
       controllers: [AppController],
       providers: [AppService],
     }).compile();
