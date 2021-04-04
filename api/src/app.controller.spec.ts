@@ -33,7 +33,7 @@ describe('AppController', () => {
 
     it('should return the resquest user', async () => {
       const user: AuthUser = {
-        userId: 1,
+        userId: '1',
         username: 'sonofab1rd',
       };
       const req = getMockReq({

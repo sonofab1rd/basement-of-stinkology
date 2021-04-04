@@ -23,6 +23,9 @@ jobs:
   test-e2e:
     runs-on: ubuntu-latest
 
+    env:
+      BOS_JWT_SECRET: 'ci-secret'
+
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
