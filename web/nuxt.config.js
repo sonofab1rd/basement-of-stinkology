@@ -75,4 +75,4 @@ export default {
       'https://the-basement-309319-default-rtdb.firebaseio.com/',
     apiKey: 'AIzaSyDisilg5fUsKKFSjMt7f9le-xgVfTLzHeA',
   },
-}
+};

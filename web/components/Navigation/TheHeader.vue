@@ -12,9 +12,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api'
-import HeaderLink from '@/components/Navigation/HeaderLink.vue'
-import TheSidebarToggle from '@/components/Navigation/TheSidebarToggle.vue'
+import { defineComponent } from '@nuxtjs/composition-api';
+import HeaderLink from '@/components/Navigation/HeaderLink.vue';
+import TheSidebarToggle from '@/components/Navigation/TheSidebarToggle.vue';
 
 export default defineComponent({
   name: 'TheHeader',
@@ -28,8 +28,8 @@ export default defineComponent({
       'Movies',
       'auth',
       // 'user-profile',
-    ]
-    return { links }
+    ];
+    return { links };
   },
-})
+});
 </script>

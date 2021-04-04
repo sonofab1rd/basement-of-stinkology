@@ -28,18 +28,18 @@ import {
   ref,
   useRouter,
   useStore,
-} from '@nuxtjs/composition-api'
-import AppControlInput from '~/components/UI/AppControlInput.vue'
-import AppButton from '~/components/UI/AppButton.vue'
+} from '@nuxtjs/composition-api';
+import AppControlInput from '~/components/UI/AppControlInput.vue';
+import AppButton from '~/components/UI/AppButton.vue';
 
 export default defineComponent({
   components: { AppControlInput, AppButton },
   setup() {
-    const isLogin = ref(true)
-    const email = ref('')
-    const password = ref('')
-    const store = useStore()
-    const router = useRouter()
+    const isLogin = ref(true);
+    const email = ref('');
+    const password = ref('');
+    const store = useStore();
+    const router = useRouter();
     const onSubmit = (): void => {
       store
         .dispatch('authenticateUser', {
@@ -47,9 +47,9 @@ export default defineComponent({
           email: email.value,
           password: password.value,
         })
-        .then(() => router.push('/'))
-    }
-    return { isLogin, email, password, onSubmit }
+        .then(() => router.push('/'));
+    };
+    return { isLogin, email, password, onSubmit };
   },
-})
+});
 </script>

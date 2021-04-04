@@ -12,12 +12,12 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Sofa from '~/components/SVG/Sofa.vue'
+import Vue from 'vue';
+import Sofa from '~/components/SVG/Sofa.vue';
 
 export default Vue.extend({
   components: { Sofa },
-})
+});
 </script>
 
 <style>

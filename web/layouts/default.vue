@@ -7,17 +7,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from '@nuxtjs/composition-api'
-import TheHeader from '@/components/Navigation/TheHeader.vue'
-import TheSidebar from '@/components/Navigation/TheSidebar.vue'
+import { defineComponent, ref } from '@nuxtjs/composition-api';
+import TheHeader from '@/components/Navigation/TheHeader.vue';
+import TheSidebar from '@/components/Navigation/TheSidebar.vue';
 
 export default defineComponent({
   components: { TheHeader, TheSidebar },
   setup() {
-    const displaySidenav = ref(false)
-    return { displaySidenav }
+    const displaySidenav = ref(false);
+    return { displaySidenav };
   },
-})
+});
 </script>
 
 <style>

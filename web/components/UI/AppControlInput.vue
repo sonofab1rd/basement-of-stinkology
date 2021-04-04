@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api'
+import { defineComponent } from '@nuxtjs/composition-api';
 
 export default defineComponent({
   name: 'AppControlInput',
@@ -34,7 +34,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    return { props }
+    return { props };
   },
-})
+});
 </script>

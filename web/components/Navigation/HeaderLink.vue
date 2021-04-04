@@ -15,13 +15,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api'
-import Sofa from '@/components/SVG/Sofa.vue'
-import Controller from '@/components/SVG/Controller.vue'
-import Burger from '@/components/SVG/Burger.vue'
-import Mug from '@/components/SVG/Mug.vue'
-import Reel from '@/components/SVG/Reel.vue'
-import User from '@/components/SVG/User.vue'
+import { defineComponent } from '@nuxtjs/composition-api';
+import Sofa from '@/components/SVG/Sofa.vue';
+import Controller from '@/components/SVG/Controller.vue';
+import Burger from '@/components/SVG/Burger.vue';
+import Mug from '@/components/SVG/Mug.vue';
+import Reel from '@/components/SVG/Reel.vue';
+import User from '@/components/SVG/User.vue';
 
 export default defineComponent({
   name: 'HeaderLink',
@@ -34,9 +34,9 @@ export default defineComponent({
   },
   setup(props) {
     const getLink =
-      props.link === 'The Basement' ? '/' : props.link.toLowerCase()
+      props.link === 'The Basement' ? '/' : props.link.toLowerCase();
 
-    return { getLink }
+    return { getLink };
   },
-})
+});
 </script>
