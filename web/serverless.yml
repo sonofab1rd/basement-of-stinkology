@@ -22,7 +22,7 @@ package:
 
 plugins:
   - serverless-apigw-binary
-  # - serverless-domain-manager
+  - serverless-domain-manager
 
 provider:
   name: aws
@@ -40,6 +40,9 @@ functions:
   main:
     handler: main.handler
     events:
+      - http:
+          method: any
+          path: /
       - http:
           method: any
           path: '{proxy+}'
