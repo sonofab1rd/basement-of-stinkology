@@ -16,7 +16,7 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
-  // Global CSS: https://nuxtjs.org/docs/2.x/directory-structure/nuxt-config#srcdir
+  // Source Directory: https://nuxtjs.org/docs/2.x/directory-structure/nuxt-config#srcdir
   srcDir: 'src/',
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
