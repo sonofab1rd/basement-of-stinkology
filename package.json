@@ -12,10 +12,15 @@
     "test": "lerna run test --stream",
     "test:e2e": "lerna run test:e2e --stream"
   },
-  "workspaces": [
-    "api",
-    "web"
-  ],
+  "workspaces": {
+    "packages": [
+      "api",
+      "web"
+    ],
+    "nohoist": [
+      "**"
+    ]
+  },
   "dependencies": {
     "lerna": "4.0.0",
     "prettier": "2.2.1",

@@ -52,8 +52,8 @@ export async function handler(event: any, context: Context): Promise<Response> {
 async function main() {
   const server = await bootstrap();
 
-  server.listen(3000, () => {
-    console.log('Server listening on http://localhost:3000');
+  server.listen(3001, () => {
+    console.log('Server listening on http://localhost:3001');
   });
 }
 
