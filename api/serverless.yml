@@ -1,5 +1,7 @@
 service: bos-api
 
+frameworkVersion: '2'
+
 useDotenv: true
 
 custom:

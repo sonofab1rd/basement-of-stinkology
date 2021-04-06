@@ -16,8 +16,11 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
+  // Source Directory: https://nuxtjs.org/docs/2.x/directory-structure/nuxt-config#srcdir
+  srcDir: 'src/',
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@/plugins/composition-api.ts'],
+  plugins: ['~/plugins/composition-api.ts'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

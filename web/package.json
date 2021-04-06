@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "prebuild": "rimraf .nuxt",
+    "predeploy": "rimraf .serverless",
     "dev": "nuxt",
     "build": "nuxt build",
+    "deploy": "serverless deploy",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue,.ts\" --ignore-path .gitignore .",
@@ -13,7 +16,9 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.13.1",
     "@nuxtjs/composition-api": "^0.22.4",
+    "aws-serverless-express": "^3.4.0",
     "core-js": "^3.9.1",
+    "express": "^4.17.1",
     "js-cookie": "^2.2.1",
     "nuxt": "^2.15.3",
     "nuxt-typed-vuex": "^0.1.22"
@@ -31,6 +36,9 @@
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.7.0",
-    "postcss": "^8.2.8"
+    "postcss": "^8.2.8",
+    "rimraf": "^3.0.2",
+    "serverless-apigw-binary": "^0.4.4",
+    "serverless-domain-manager": "^5.1.0"
   }
 }

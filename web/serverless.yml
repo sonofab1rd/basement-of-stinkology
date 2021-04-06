@@ -1,0 +1,48 @@
+service: bos-web
+
+frameworkVersion: '2'
+
+useDotenv: true
+
+custom:
+  apigwBinary:
+    types:
+      - '*/*'
+
+  customDomain:
+    domainName: thebasementofstinkology.com
+    autoDomain: true
+
+package:
+  patterns:
+    - package.json
+    - 'main.js'
+    - '.nuxt/dist/**'
+    - '!src/**'
+
+plugins:
+  - serverless-apigw-binary
+  - serverless-domain-manager
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: ${env:BOS_ENV, 'develop'}
+  region: ${opt:region, 'us-east-1'}
+
+  apiGateway:
+    shouldStartNameWithService: true
+
+  environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+
+functions:
+  main:
+    handler: main.handler
+    events:
+      - http:
+          method: any
+          path: /
+      - http:
+          method: any
+          path: '{proxy+}'
