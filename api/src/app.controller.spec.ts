@@ -41,7 +41,7 @@ describe('AppController', () => {
       await expect(appController.login(req)).resolves.toBeUndefined();
     });
 
-    it('should return the resquest user', async () => {
+    it('should return the requested user', async () => {
       const user: AuthUser = {
         userId: '1',
         username: 'sonofab1rd',

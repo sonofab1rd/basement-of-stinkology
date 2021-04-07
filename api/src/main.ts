@@ -19,6 +19,7 @@ export async function createApp(
   const app = await NestFactory.create(
     AppModule,
     new ExpressAdapter(expressApp),
+    { cors: true },
   );
 
   return app;

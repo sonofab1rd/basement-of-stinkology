@@ -43,15 +43,17 @@ describe('AuthService', () => {
 
   describe('validateUser', () => {
     it('should validate a known user', async () => {
-      await expect(service.validateUser('john', 'changeme')).resolves.toEqual({
+      await expect(
+        service.validateUser('test@email.com', 'abc123'),
+      ).resolves.toEqual({
         userId: '1',
-        username: 'john',
+        username: 'test@email.com',
       });
     });
 
     it('should not validate a known user with an incorrect password', async () => {
       await expect(
-        service.validateUser('john', 'wrong-password'),
+        service.validateUser('test@email.com', 'wrong-password'),
       ).resolves.toBeNull();
     });
 
@@ -64,10 +66,13 @@ describe('AuthService', () => {
 
   describe('login', () => {
     it('should login', async () => {
-      const result = await service.login({ userId: '1', username: 'john' });
+      const result = await service.login({
+        userId: '1',
+        username: 'test@email.com',
+      });
 
       expect(jwtDecode(result.access_token)).toEqual(
-        expect.objectContaining({ username: 'john' }),
+        expect.objectContaining({ username: 'test@email.com' }),
       );
     });
   });

@@ -1,5 +1,6 @@
 import { getAccessorType, mutationTree, actionTree } from 'typed-vuex';
 import Cookie from 'js-cookie';
+import { Request } from 'express';
 
 // Import all your submodules
 // import * as submodule from '~/store/submodule'
@@ -10,61 +11,57 @@ interface AuthData {
   password: String;
 }
 
-export const state = () => ({
+interface State {
+  token: string | null;
+}
+
+export const state: () => State = () => ({
   token: '',
 });
 
-type RootState = ReturnType<typeof state>;
-
 export const getters = {
-  token: (state: RootState) => state.token,
-  isAuthenticated(state: RootState) {
-    return state.token !== '';
+  token: (state: State) => state.token,
+  isAuthenticated(state: State) {
+    return Boolean(state.token);
   },
 };
 export const mutations = mutationTree(state, {
-  setToken(state, newValue: string) {
+  setToken(state, newValue: State['token']) {
     state.token = newValue;
   },
   clearToken(state) {
-    console.log('clearToken', state);
-    state.token = '';
+    state.token = null;
   },
 });
 export const actions = actionTree(
   { state, getters, mutations },
   {
     authenticateUser(_vuexContext, authData: AuthData): Promise<any> {
-      let authUrl =
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' +
-        process.env.apiKey;
+      let authUrl = '/auth/login';
       if (!authData.isLogin) {
-        authUrl =
-          'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
-          process.env.apiKey;
+        authUrl = '/auth/signup';
       }
       return this.$axios
         .$post(authUrl, {
-          email: authData.email,
+          username: authData.email,
           password: authData.password,
-          returnSecureToken: true,
         })
         .then((result: any) => {
-          _vuexContext.commit('setToken', result.idToken);
-          localStorage.setItem('token', result.idToken);
-          localStorage.setItem(
-            'tokenExpiration',
-            String(
-              new Date().getTime() + Number.parseInt(result.expiresIn) * 1000,
-            ),
-          );
-          Cookie.set('jwt', result.idToken);
-          Cookie.set(
-            'expirationDate',
-            String(
-              new Date().getTime() + Number.parseInt(result.expiresIn) * 1000,
-            ),
-          );
+          _vuexContext.commit('setToken', result.access_token);
+          localStorage.setItem('access_token', result.access_token);
+          // localStorage.setItem(
+          //   'tokenExpiration',
+          //   String(
+          //     new Date().getTime() + Number.parseInt(result.expiresIn) * 1000,
+          //   ),
+          // );
+          Cookie.set('access_token', result.access_token);
+          // Cookie.set(
+          //   'expirationDate',
+          //   String(
+          //     new Date().getTime() + Number.parseInt(result.expiresIn) * 1000,
+          //   ),
+          // );
         })
         .catch((e: any) => console.log('error', e));
     },
@@ -76,41 +73,45 @@ export const actions = actionTree(
         vuexContext.commit('clearToken');
       }, duration);
     },
-    initAuth(vuexContext, req) {
-      let token;
-      let expirationDate;
+    initAuth(vuexContext, req: Request) {
+      let token: string | null;
+      // let expirationDate;
       if (req) {
         if (!req.headers.cookie) {
           return;
         }
+
         const jwtCookie = req.headers.cookie
           .split(';')
-          .find((c: String) => c.trim().startsWith('jwt='));
+          .find((c: String) => c.trim().startsWith('access_token='));
+
         if (!jwtCookie) {
           return;
         }
+
         token = jwtCookie.split('=')[1];
-        expirationDate = req.headers.cookie
-          .split(';')
-          .find((c: String) => c.trim().startsWith('expirationDate='))
-          .split('=')[1];
+        // expirationDate = req.headers.cookie
+        //   .split(';')
+        //   .find((c: String) => c.trim().startsWith('expirationDate='))
+        //   .split('=')[1];
       } else {
-        token = localStorage.getItem('token');
-        expirationDate = localStorage.getItem('tokenExpiration');
+        token = localStorage.getItem('access_token');
+        // expirationDate = localStorage.getItem('tokenExpiration');
       }
-      if (new Date().getTime() > +expirationDate || !token) {
-        vuexContext.dispatch('logout');
-        return;
-      }
+      // if (new Date().getTime() > +expirationDate || !token) {
+      //   vuexContext.dispatch('logout');
+      //   return;
+      // }
       vuexContext.commit('setToken', token);
     },
     logout(vuexContext) {
       vuexContext.commit('clearToken');
-      Cookie.remove('jwt');
-      Cookie.remove('expirationDate');
+      Cookie.remove('access_token');
+      // Cookie.remove('expirationDate');
+
       if (process.client) {
-        localStorage.removeItem('token');
-        localStorage.removeItem('tokenExpiration');
+        localStorage.removeItem('access_token');
+        // localStorage.removeItem('tokenExpiration');
       }
     },
   },

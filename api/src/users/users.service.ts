@@ -9,8 +9,8 @@ export type User = {
 const users: readonly User[] = [
   {
     userId: '1',
-    username: 'john',
-    password: 'changeme',
+    username: 'test@email.com',
+    password: 'abc123',
   },
 ];
 
