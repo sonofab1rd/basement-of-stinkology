@@ -48,7 +48,7 @@ export default {
     baseUrl:
       process.env.BOS_ENV === 'local'
         ? 'http://localhost:3001/'
-        : 'https://api.thebasementofstinklogy.com/',
+        : 'https://api.thebasementofstinkology.com/',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
