@@ -27,7 +27,6 @@ export const mutations = mutationTree(state, {
     state.token = newValue;
   },
   clearToken(state) {
-    console.log('clearToken', state);
     state.token = '';
   },
 });
@@ -35,19 +34,14 @@ export const actions = actionTree(
   { state, getters, mutations },
   {
     authenticateUser(_vuexContext, authData: AuthData): Promise<any> {
-      let authUrl =
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' +
-        process.env.apiKey;
+      let authUrl = '/auth/login';
       if (!authData.isLogin) {
-        authUrl =
-          'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
-          process.env.apiKey;
+        authUrl = '/auth/signup';
       }
       return this.$axios
         .$post(authUrl, {
           email: authData.email,
           password: authData.password,
-          returnSecureToken: true,
         })
         .then((result: any) => {
           _vuexContext.commit('setToken', result.idToken);

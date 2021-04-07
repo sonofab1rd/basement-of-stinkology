@@ -17,10 +17,10 @@ describe('UsersService', () => {
   });
 
   it('should find a known user', async () => {
-    await expect(service.findOne('john')).resolves.toEqual({
+    await expect(service.findOne('test@email.com')).resolves.toEqual({
       userId: '1',
-      username: 'john',
-      password: 'changeme',
+      email: 'test@email.com',
+      password: 'abc123',
     });
   });
 

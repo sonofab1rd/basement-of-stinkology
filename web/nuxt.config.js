@@ -46,8 +46,9 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseUrl:
-      process.env.BASE_URL ||
-      'https://the-basement-309319-default-rtdb.firebaseio.com/',
+      process.env.BOS_ENV === 'local'
+        ? 'http://localhost:3001/'
+        : 'https://api.thebasementofstinklogy.com/',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -70,12 +71,5 @@ export default {
   generate: {
     // choose to suit your project
     interval: 2000,
-  },
-
-  env: {
-    baseUrl:
-      process.env.BASE_URL ||
-      'https://the-basement-309319-default-rtdb.firebaseio.com/',
-    apiKey: 'AIzaSyDisilg5fUsKKFSjMt7f9le-xgVfTLzHeA',
   },
 };
