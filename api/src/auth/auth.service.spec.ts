@@ -47,7 +47,7 @@ describe('AuthService', () => {
         service.validateUser('test@email.com', 'abc123'),
       ).resolves.toEqual({
         userId: '1',
-        email: 'test@email.com',
+        username: 'test@email.com',
       });
     });
 
@@ -68,11 +68,11 @@ describe('AuthService', () => {
     it('should login', async () => {
       const result = await service.login({
         userId: '1',
-        email: 'test@email.com',
+        username: 'test@email.com',
       });
 
       expect(jwtDecode(result.access_token)).toEqual(
-        expect.objectContaining({ email: 'test@email.com' }),
+        expect.objectContaining({ username: 'test@email.com' }),
       );
     });
   });

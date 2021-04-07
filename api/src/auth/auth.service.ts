@@ -14,7 +14,7 @@ interface JwtPayload {
   jti?: string;
 }
 
-export type Payload = JwtPayload & Pick<AuthUser, 'email'>;
+export type Payload = JwtPayload & Pick<AuthUser, 'username'>;
 
 @Injectable()
 export class AuthService {
@@ -23,8 +23,8 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async validateUser(email: string, password: string): Promise<AuthUser> {
-    const user = await this.usersService.findOne(email);
+  async validateUser(username: string, password: string): Promise<AuthUser> {
+    const user = await this.usersService.findOne(username);
 
     if (user?.password === password) {
       const { password: _, ...result } = user;
@@ -33,8 +33,8 @@ export class AuthService {
     return null;
   }
 
-  async login({ email, userId }: AuthUser) {
-    const payload: Payload = { email, sub: userId };
+  async login({ username, userId }: AuthUser) {
+    const payload: Payload = { username, sub: userId };
 
     return {
       access_token: this.jwtService.sign(payload),

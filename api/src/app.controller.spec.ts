@@ -44,7 +44,7 @@ describe('AppController', () => {
     it('should return the requested user', async () => {
       const user: AuthUser = {
         userId: '1',
-        email: 'sonofab1rd',
+        username: 'sonofab1rd',
       };
       const req = getMockReq({
         user,
@@ -54,7 +54,7 @@ describe('AppController', () => {
 
       expect(jwtDecode(result.access_token)).toEqual(
         expect.objectContaining({
-          email: 'sonofab1rd',
+          username: 'sonofab1rd',
         }),
       );
     });

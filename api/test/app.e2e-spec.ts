@@ -33,14 +33,14 @@ describe('AppController (e2e)', () => {
   it('/auth/login Authorized (POST)', () => {
     return request(app.getHttpServer())
       .post('/auth/login')
-      .send({ username: 'john', password: 'changeme' })
+      .send({ username: 'test@email.com', password: 'abc123' })
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(201)
       .expect((res) =>
         expect(jwtDecode(res.body.access_token)).toEqual(
           expect.objectContaining({
-            username: 'john',
+            username: 'test@email.com',
           }),
         ),
       );
@@ -57,7 +57,7 @@ describe('AppController (e2e)', () => {
     // TODO: Future tests could use an abstracted authenticate function.
     await request(app.getHttpServer())
       .post('/auth/login')
-      .send({ username: 'john', password: 'changeme' })
+      .send({ username: 'test@email.com', password: 'abc123' })
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(201)
@@ -66,7 +66,7 @@ describe('AppController (e2e)', () => {
 
         expect(jwtDecode(res.body.access_token)).toEqual(
           expect.objectContaining({
-            username: 'john',
+            username: 'test@email.com',
           }),
         );
       });
@@ -75,6 +75,6 @@ describe('AppController (e2e)', () => {
       .get('/profile')
       .set('Authorization', `Bearer ${token}`)
       .expect(200)
-      .expect(JSON.stringify({ userId: '1', username: 'john' }));
+      .expect(JSON.stringify({ userId: '1', username: 'test@email.com' }));
   });
 });
