@@ -11,6 +11,7 @@ import * as path from 'path';
 import { AppModule } from './app.module';
 
 dotenv.config();
+console.log(`Loaded .env from ${path.resolve(process.cwd(), '.env')}`);
 
 export async function createApp(
   expressApp: Express,
