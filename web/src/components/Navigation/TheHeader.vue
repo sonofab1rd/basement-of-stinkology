@@ -2,7 +2,7 @@
   <div>
     <header>
       <TheSidebarToggle @toggle="$emit('sidenavToggle')" />
-      <ul class="hidden md:grid grid-cols-6 place-items-center">
+      <ul class="hidden bg-gray-300 md:grid grid-cols-6 place-items-center">
         <li v-for="link in links" :key="link">
           <HeaderLink :link="link" />
         </li>

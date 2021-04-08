@@ -1,13 +1,13 @@
 <template>
   <div class="p-4 m-4">
     <nuxt-link :to="getLink">
-      <div class="h-36 w-36 items-center">
-        <Sofa v-if="link === 'The Basement'" />
-        <Controller v-else-if="link === 'Games'" />
-        <Burger v-else-if="link === 'Meals'" />
-        <Mug v-else-if="link === 'Drinks'" />
-        <Reel v-else-if="link === 'Movies'" />
-        <User v-else-if="link === 'auth'" />
+      <div class="items-center text-center">
+        <Sofa v-if="link === 'The Basement'" class="block m-auto" />
+        <div v-else-if="link === 'Games'">Games</div>
+        <div v-else-if="link === 'Meals'">Meals</div>
+        <div v-else-if="link === 'Drinks'">Drinks</div>
+        <div v-else-if="link === 'Movies'">Movies</div>
+        <User v-else-if="link === 'auth'" class="block m-auto" />
       </div>
     </nuxt-link>
     <!-- <nuxt-link v-else class="text-3xl m-2" :to="getLink">{{ link }}</nuxt-link> -->
