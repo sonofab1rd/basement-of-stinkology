@@ -1,24 +1,12 @@
 <template>
   <div class="container">
     <div>
-      <div class="px-32 mx-32">
-        <Sofa />
-      </div>
-      <h1 class="md:block md:font-light md:text-8xl">
+      <h1 class="md:block md:font-light md:text-6xl p-2 m-2">
         The Basement of Stinkology
       </h1>
     </div>
   </div>
 </template>
-
-<script lang="ts">
-import Vue from 'vue';
-import Sofa from '~/components/SVG/Sofa.vue';
-
-export default Vue.extend({
-  components: { Sofa },
-});
-</script>
 
 <style>
 /* Sample `apply` at-rules with Tailwind CSS
