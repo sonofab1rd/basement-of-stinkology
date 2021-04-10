@@ -11,16 +11,27 @@ interface AuthData {
   password: String;
 }
 
+interface Profile {
+  tag: String;
+  firstName: String;
+  lastName: String;
+  email: String;
+  password: String;
+}
+
 interface State {
   token: string | null;
+  profile: Profile | null;
 }
 
 export const state: () => State = () => ({
   token: '',
+  profile: null,
 });
 
 export const getters = {
   token: (state: State) => state.token,
+  profile: (state: State) => state.profile,
   isAuthenticated(state: State) {
     return Boolean(state.token);
   },
@@ -28,6 +39,9 @@ export const getters = {
 export const mutations = mutationTree(state, {
   setToken(state, newValue: State['token']) {
     state.token = newValue;
+  },
+  setProfile(state, newValue: State['profile']) {
+    state.profile = newValue;
   },
   clearToken(state) {
     state.token = null;
@@ -113,6 +127,20 @@ export const actions = actionTree(
         localStorage.removeItem('access_token');
         // localStorage.removeItem('tokenExpiration');
       }
+    },
+    setProfile(vuexContext, profile: Profile) {
+      return this.$axios
+        .$post('/user-profile', {
+          tag: profile.tag,
+          firstName: profile.firstName,
+          lastName: profile.lastName,
+          email: profile.email,
+          password: profile.password,
+        })
+        .then((result: any) => {
+          vuexContext.commit('setProfile', result.profile);
+        })
+        .catch((e: any) => console.log('error', e));
     },
   },
 );
