@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api';
+import { defineComponent, useStore } from '@nuxtjs/composition-api';
 import HeaderLink from '@/components/Navigation/HeaderLink.vue';
 import TheSidebarToggle from '@/components/Navigation/TheSidebarToggle.vue';
 
@@ -20,15 +20,14 @@ export default defineComponent({
   name: 'TheHeader',
   components: { HeaderLink, TheSidebarToggle },
   setup() {
-    const links: Array<String> = [
-      'The Basement',
-      'Games',
-      'Meals',
-      'Drinks',
-      'Movies',
-      'auth',
-      // 'user-profile',
-    ];
+    const store = useStore();
+    const isAuthenticated: Boolean = store.getters.isAuthenticated;
+    const links: Array<String> = ['/', 'Games', 'Meals', 'Drinks', 'Movies'];
+    if (isAuthenticated) {
+      links.push('user-profile');
+    } else {
+      links.push('auth');
+    }
     return { links };
   },
 });
