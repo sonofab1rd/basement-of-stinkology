@@ -29,9 +29,35 @@ export class AppController {
     return this.authService.login(req.user as AuthUser);
   }
 
-  @UseGuards(JwtAuthGuard)
-  @Get('profile')
+  // @UseGuards(JwtAuthGuard)
+  @Get('profile/:id')
   getProfile(@Request() req) {
-    return req.user;
+    console.log('getProfile', req);
+    return {
+      profile: {
+        userId: '1',
+        tag: 'tag',
+        firstName: 'firstName',
+        lastName: 'lastName',
+        email: 'email',
+        password: 'password',
+      },
+    };
+  }
+
+  // @UseGuards(JwtAuthGuard)
+  @Post('profile')
+  setProfile(@Request() req) {
+    console.log('postProfile', req);
+    return {
+      profile: {
+        userId: '1',
+        tag: 'tag',
+        firstName: 'firstName',
+        lastName: 'lastName',
+        email: 'email',
+        password: 'password',
+      },
+    };
   }
 }

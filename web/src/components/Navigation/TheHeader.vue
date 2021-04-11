@@ -28,7 +28,7 @@ const getLinks = (isAuthenticated: boolean) => [
   'Meals',
   'Drinks',
   'Movies',
-  isAuthenticated ? 'user-profile' : 'auth',
+  isAuthenticated ? 'profile' : 'auth',
 ];
 
 export default defineComponent({

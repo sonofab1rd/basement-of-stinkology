@@ -2,7 +2,7 @@
   <nuxt-link class="p-4 m-4 block" :to="getLink">
     <Home v-if="link === '/'" />
     <User v-else-if="link === 'auth'" />
-    <User v-else-if="link === 'user-profile'" />
+    <User v-else-if="link === 'profile'" />
     <span v-else>{{ link }}</span>
   </nuxt-link>
 </template>
