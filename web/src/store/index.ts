@@ -22,12 +22,12 @@ interface Profile {
 
 interface State {
   token: string | null;
-  profile: Profile | null;
+  profile: Profile | {};
 }
 
 export const state: () => State = () => ({
   token: '',
-  profile: null,
+  profile: {},
 });
 
 export const getters = {
@@ -43,7 +43,7 @@ export const mutations = mutationTree(state, {
   },
   setProfile(state, newValue: State['profile']) {
     console.log('in setProfile', newValue);
-    state.profile = newValue;
+    state.profile = { ...newValue };
   },
   clearToken(state) {
     state.token = null;
@@ -105,15 +105,15 @@ export const actions = actionTree(
     },
     setProfile(vuexContext, profile: Profile) {
       return this.$axios
-        .$post('/profile', profile)
-        .then((result: any) => {
-          vuexContext.commit('setProfile', result.profile);
+        .$put('/users', profile)
+        .then(() => {
+          vuexContext.commit('setProfile', profile);
         })
         .catch((e: any) => console.log('error', e));
     },
     getProfile(vuexContext, profile: Profile) {
       return this.$axios
-        .$get('/profile/' + profile.userID)
+        .$get('/users/' + profile.userID)
         .then((result: any) => {
           vuexContext.commit('setProfile', result.profile);
         })

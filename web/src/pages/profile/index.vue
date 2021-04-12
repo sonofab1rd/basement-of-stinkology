@@ -7,13 +7,17 @@
         @submit.prevent="onSubmit"
       >
         <UserIcon />
-        <AppControlInput v-model="profile.tag">Gamertag</AppControlInput>
-        <AppControlInput v-model="profile.firstName"
+        <AppControlInput v-model="state.profile.tag">Gamertag</AppControlInput>
+        <AppControlInput v-model="state.profile.firstName"
           >First Name</AppControlInput
         >
-        <AppControlInput v-model="profile.lastName">Last Name</AppControlInput>
-        <AppControlInput v-model="profile.email">Email</AppControlInput>
-        <AppControlInput v-model="profile.password">Password</AppControlInput>
+        <AppControlInput v-model="state.profile.lastName"
+          >Last Name</AppControlInput
+        >
+        <AppControlInput v-model="state.profile.email">Email</AppControlInput>
+        <AppControlInput v-model="state.profile.password"
+          >Password</AppControlInput
+        >
         <AppButton type="submit">Submit Changes</AppButton>
       </form>
     </div>
@@ -26,18 +30,12 @@ import {
   useStore,
   useRouter,
   reactive,
+  computed,
+  watch,
 } from '@nuxtjs/composition-api';
 import UserIcon from '@/components/User/Icon.vue';
 import AppControlInput from '~/components/UI/AppControlInput.vue';
 import AppButton from '~/components/UI/AppButton.vue';
-interface Profile {
-  userID: String;
-  tag: String;
-  firstName: String;
-  lastName: String;
-  email: String;
-  password: String;
-}
 
 export default defineComponent({
   components: { UserIcon, AppControlInput, AppButton },
@@ -45,22 +43,21 @@ export default defineComponent({
   setup() {
     const store = useStore();
     const router = useRouter();
-    const profileData: Profile = store.getters.profile || {
-      userId: '1',
-      tag: 'tag',
-      firstName: 'firstName',
-      lastName: 'lastName',
-      email: 'email',
-      password: 'password',
-    };
+    const profile = computed(() => ({ ...store.getters.profile }));
+    const state = reactive({
+      profile: { ...profile.value },
+    });
 
-    const profile = reactive(profileData);
+    watch(profile, (newProfile) => {
+      state.profile = newProfile;
+    });
 
     const onSubmit = (): void => {
-      store.dispatch('setProfile', { profile }).then(() => router.push('/'));
+      store.dispatch('setProfile', { ...state.profile });
+      // .then(() => router.push('/'))
     };
 
-    return { profile, onSubmit };
+    return { state, onSubmit };
   },
 });
 </script>
