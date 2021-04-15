@@ -42,7 +42,6 @@ export const mutations = mutationTree(state, {
     state.token = newValue;
   },
   setProfile(state, newValue: State['profile']) {
-    console.log('in setProfile', newValue);
     state.profile = { ...newValue };
   },
   clearToken(state) {
@@ -52,7 +51,7 @@ export const mutations = mutationTree(state, {
 export const actions = actionTree(
   { state, getters, mutations },
   {
-    authenticateUser(_vuexContext, authData: AuthData): Promise<any> {
+    authenticateUser(vuexContext, authData: AuthData): Promise<any> {
       let authUrl = '/auth/login';
       if (!authData.isLogin) {
         authUrl = '/auth/signup';
@@ -63,9 +62,10 @@ export const actions = actionTree(
           password: authData.password,
         })
         .then((result: any) => {
-          _vuexContext.commit('setToken', result.access_token);
+          vuexContext.commit('setToken', result.access_token);
           localStorage.setItem('access_token', result.access_token);
           Cookie.set('access_token', result.access_token);
+          vuexContext.dispatch('getProfile', '1');
         })
         .catch((e: any) => console.log('error', e));
     },
@@ -111,9 +111,9 @@ export const actions = actionTree(
         })
         .catch((e: any) => console.log('error', e));
     },
-    getProfile(vuexContext, profile: Profile) {
+    getProfile(vuexContext, id: String) {
       return this.$axios
-        .$get('/users/' + profile.userID)
+        .$get('/users/' + id)
         .then((result: any) => {
           vuexContext.commit('setProfile', result.profile);
         })

@@ -28,7 +28,6 @@
 import {
   defineComponent,
   useStore,
-  useRouter,
   reactive,
   computed,
   watch,
@@ -42,7 +41,6 @@ export default defineComponent({
 
   setup() {
     const store = useStore();
-    const router = useRouter();
     const profile = computed(() => ({ ...store.getters.profile }));
     const state = reactive({
       profile: { ...profile.value },
@@ -54,7 +52,6 @@ export default defineComponent({
 
     const onSubmit = (): void => {
       store.dispatch('setProfile', { ...state.profile });
-      // .then(() => router.push('/'))
     };
 
     return { state, onSubmit };
