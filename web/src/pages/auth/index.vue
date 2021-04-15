@@ -47,7 +47,7 @@ export default defineComponent({
           email: email.value,
           password: password.value,
         })
-        .then(() => router.push('/'));
+        .then(() => router.push('/profile'));
     };
     return { isLogin, email, password, onSubmit };
   },

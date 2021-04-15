@@ -11,16 +11,28 @@ interface AuthData {
   password: String;
 }
 
+interface Profile {
+  userID: String;
+  tag: String;
+  firstName: String;
+  lastName: String;
+  email: String;
+  password: String;
+}
+
 interface State {
   token: string | null;
+  profile: Profile | {};
 }
 
 export const state: () => State = () => ({
   token: '',
+  profile: {},
 });
 
 export const getters = {
   token: (state: State) => state.token,
+  profile: (state: State) => state.profile,
   isAuthenticated(state: State) {
     return Boolean(state.token);
   },
@@ -29,6 +41,9 @@ export const mutations = mutationTree(state, {
   setToken(state, newValue: State['token']) {
     state.token = newValue;
   },
+  setProfile(state, newValue: State['profile']) {
+    state.profile = { ...newValue };
+  },
   clearToken(state) {
     state.token = null;
   },
@@ -36,7 +51,7 @@ export const mutations = mutationTree(state, {
 export const actions = actionTree(
   { state, getters, mutations },
   {
-    authenticateUser(_vuexContext, authData: AuthData): Promise<any> {
+    authenticateUser(vuexContext, authData: AuthData): Promise<any> {
       let authUrl = '/auth/login';
       if (!authData.isLogin) {
         authUrl = '/auth/signup';
@@ -47,27 +62,13 @@ export const actions = actionTree(
           password: authData.password,
         })
         .then((result: any) => {
-          _vuexContext.commit('setToken', result.access_token);
+          vuexContext.commit('setToken', result.access_token);
           localStorage.setItem('access_token', result.access_token);
-          // localStorage.setItem(
-          //   'tokenExpiration',
-          //   String(
-          //     new Date().getTime() + Number.parseInt(result.expiresIn) * 1000,
-          //   ),
-          // );
           Cookie.set('access_token', result.access_token);
-          // Cookie.set(
-          //   'expirationDate',
-          //   String(
-          //     new Date().getTime() + Number.parseInt(result.expiresIn) * 1000,
-          //   ),
-          // );
+          vuexContext.dispatch('getProfile', '1');
         })
         .catch((e: any) => console.log('error', e));
     },
-    // nuxtServerInit(_vuexContext, nuxtContext) {
-    //   console.log(nuxtContext)
-    // },
     setLogoutTimer(vuexContext, duration) {
       setTimeout(() => {
         vuexContext.commit('clearToken');
@@ -75,7 +76,6 @@ export const actions = actionTree(
     },
     initAuth(vuexContext, req: Request) {
       let token: string | null;
-      // let expirationDate;
       if (req) {
         if (!req.headers.cookie) {
           return;
@@ -90,29 +90,34 @@ export const actions = actionTree(
         }
 
         token = jwtCookie.split('=')[1];
-        // expirationDate = req.headers.cookie
-        //   .split(';')
-        //   .find((c: String) => c.trim().startsWith('expirationDate='))
-        //   .split('=')[1];
       } else {
         token = localStorage.getItem('access_token');
-        // expirationDate = localStorage.getItem('tokenExpiration');
       }
-      // if (new Date().getTime() > +expirationDate || !token) {
-      //   vuexContext.dispatch('logout');
-      //   return;
-      // }
       vuexContext.commit('setToken', token);
     },
     logout(vuexContext) {
       vuexContext.commit('clearToken');
       Cookie.remove('access_token');
-      // Cookie.remove('expirationDate');
 
       if (process.client) {
         localStorage.removeItem('access_token');
-        // localStorage.removeItem('tokenExpiration');
       }
+    },
+    setProfile(vuexContext, profile: Profile) {
+      return this.$axios
+        .$put('/users', profile)
+        .then(() => {
+          vuexContext.commit('setProfile', profile);
+        })
+        .catch((e: any) => console.log('error', e));
+    },
+    getProfile(vuexContext, id: String) {
+      return this.$axios
+        .$get('/users/' + id)
+        .then((result: any) => {
+          vuexContext.commit('setProfile', result.profile);
+        })
+        .catch((e: any) => console.log('error', e));
     },
   },
 );
