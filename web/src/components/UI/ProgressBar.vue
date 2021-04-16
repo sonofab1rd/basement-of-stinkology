@@ -1,15 +1,17 @@
 <template>
-  <div class="relative pt-1">
+  <div class="relative pt-1 m-2.5">
     <div class="flex mb-2 items-center justify-between">
       <div>
         <span
-          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-green-600 bg-green-200"
+          class="text-xs md:text-sm font-semibold inline-block py-1 px-2 uppercase rounded-full text-green-600 bg-green-200"
         >
           {{ currentTask }}
         </span>
       </div>
       <div class="text-right">
-        <span class="text-xs font-semibold inline-block text-green-600">
+        <span
+          class="text-xs md:text-sm font-semibold inline-block text-green-600"
+        >
           {{ percentComplete }}
         </span>
       </div>
@@ -28,9 +30,9 @@ import { defineComponent, reactive } from '@nuxtjs/composition-api';
 
 export default defineComponent({
   setup() {
-    const width = reactive({ width: '30%' });
     const percentComplete = '30%';
-    const currentTask = 'Task in Progress';
+    const width = reactive({ width: percentComplete });
+    const currentTask = 'Set a Date!';
     return { width, percentComplete, currentTask };
   },
 });

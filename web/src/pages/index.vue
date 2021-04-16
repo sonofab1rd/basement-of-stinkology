@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <h1 class="md:block md:font-light md:text-6xl p-2 m-2">
+      <h1 class="md:font-light md:text-6xl md:p-2 md:m-2 text-lg">
         The Basement of Stinkology
       </h1>
     </div>
