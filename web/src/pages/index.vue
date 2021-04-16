@@ -5,8 +5,23 @@
         The Basement of Stinkology
       </h1>
     </div>
+    <TagLine />
+    <ProgressBar />
   </div>
 </template>
+
+<script lang="ts">
+import { defineComponent } from '@nuxtjs/composition-api';
+import TagLine from '~/components/UI/TagLine.vue';
+import ProgressBar from '~/components/UI/ProgressBar.vue';
+
+export default defineComponent({
+  components: { TagLine, ProgressBar },
+  setup() {
+    return {};
+  },
+});
+</script>
 
 <style>
 /* Sample `apply` at-rules with Tailwind CSS
