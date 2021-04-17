@@ -1,5 +1,5 @@
 <template>
-  <div class="relative pt-1 m-2.5">
+  <div class="overflow-hidden pt-1 m-2.5">
     <div class="flex mb-2 items-center justify-between">
       <div>
         <span
@@ -30,7 +30,7 @@ import { defineComponent, reactive } from '@nuxtjs/composition-api';
 
 export default defineComponent({
   setup() {
-    const percentComplete = '30%';
+    const percentComplete = '0%';
     const width = reactive({ width: percentComplete });
     const currentTask = 'Set a Date!';
     return { width, percentComplete, currentTask };
