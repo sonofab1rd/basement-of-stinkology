@@ -1,12 +1,14 @@
 <template>
-  <div class="overflow-hidden pt-1 m-2.5">
+  <div class="overflow-hidden pt-1 md:pt-4 m-2.5">
     <div class="flex mb-2 items-center justify-between">
-      <div>
-        <span
+      <div class="text-green-600 text-center text-xs md:text-sm">
+        <nuxt-link
+          to="/date-plan"
           class="text-xs md:text-sm font-semibold inline-block py-1 px-2 uppercase rounded-full text-green-600 bg-green-200"
         >
           {{ currentTask }}
-        </span>
+        </nuxt-link>
+        Progress to Next Season
       </div>
       <div class="text-right">
         <span
