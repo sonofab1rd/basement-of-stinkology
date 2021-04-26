@@ -114,6 +114,13 @@ export const actions = actionTree(
         // localStorage.removeItem('tokenExpiration');
       }
     },
+    weekendOptions(vuexContext, payload): Promise<any> {
+      console.log('payload', payload);
+      return this.$axios
+        .$post('/date-plan', payload)
+        .then()
+        .catch((e: any) => console.log('error', e));
+    },
   },
 );
 
