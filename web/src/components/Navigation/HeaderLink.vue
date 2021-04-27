@@ -1,9 +1,9 @@
 <template>
-  <nuxt-link class="p-4 m-4 block" :to="getLink">
+  <NuxtLink class="p-4 m-4 block" :to="getLink">
     <Home v-if="link === 'The Basement'" />
     <User v-else-if="link === 'auth'" />
     <span v-else>{{ link }}</span>
-  </nuxt-link>
+  </NuxtLink>
 </template>
 
 <script lang="ts">
@@ -22,7 +22,7 @@ export default defineComponent({
   },
   setup(props) {
     const getLink =
-      props.link === 'The Basement' ? '/' : props.link.toLowerCase();
+      props.link === 'The Basement' ? '/' : '/' + props.link.toLowerCase();
 
     return { getLink };
   },
